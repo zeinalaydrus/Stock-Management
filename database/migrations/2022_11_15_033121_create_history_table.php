@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('history', function (Blueprint $table) {
             $table->id();
-            
+            $table->unsignedBigInteger('raw_id');
+            $table->foreign('raw_id')->references('id')->on('raw');
             $table->timestamps();
         });
     }

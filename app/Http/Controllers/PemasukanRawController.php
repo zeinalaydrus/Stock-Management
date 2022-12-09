@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
+use App\Models\Raw;
 use App\Models\Pemasukan;
 use Illuminate\Http\Request;
 
-class PemasukanController extends Controller
+class PemasukanRawController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class PemasukanController extends Controller
      */
     public function index()
     {
-        $data = Product::with('pemasukans')->get();
-        return view('Pemasukan.masuk', compact('data'));
+        $data = Raw::with('pemasukans')->get();
+        return view('PemasukanRaw.masuk', compact('data'));
     }
 
     /**
@@ -38,16 +38,16 @@ class PemasukanController extends Controller
     public function store(Request $request)
     {
         $validateData = $request->validate([
-            'product_id' => 'required',
-            'quantity' => 'required',
+            'raw_id' => 'required',
+            'stock' => 'required',
             'tanggal_masuk' => 'required',
             'bukti' => 'required|file',
             'description' => 'required',
         ]);
 
         $masuk = new Pemasukan();
-        $masuk->product_id = $request->product_id;
-        $masuk->quantity = $request->quantity;
+        $masuk->raw_id = $request->raw_id;
+        $masuk->stock = $request->stock;
         $masuk->tanggal_masuk = $request->tanggal_masuk;
         $masuk->description = $request->description;
 
@@ -60,7 +60,15 @@ class PemasukanController extends Controller
             }
             $masuk->bukti = $request->file('bukti')->getClientOriginalName();
         }
+        
+        $update = Raw::where('id',$request->raw_id)->first();
+        $update->update([
+            'stock' =>   $update->stock + $request->stock
+        ]);
+        
+     
         $masuk->save();
+
 
         return redirect()->back();
     }
@@ -105,8 +113,11 @@ class PemasukanController extends Controller
      * @param  \App\Models\Pemasukan  $pemasukan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pemasukan $pemasukan)
+    public function destroy($id)
     {
-        //
+        $delete = Pemasukan::find($id);
+        $delete->delete();
+
+        return redirect()->back();
     }
 }

@@ -67,27 +67,27 @@
                         <li class="sidebar-item {{ request()->is('*untuk-produksi') ? 'active' : '' }}">
                             <a href="{{ url('/untuk-produksi') }}" class='sidebar-link'>
                                 <i class="bi bi-box-seam"></i>
-                                <span>Untuk Produksi</span>
+                                <span>Barang Pra-Produksi</span>
                             </a>
                         </li>
                         <li class="sidebar-item {{ request()->is('*masuk') ? 'active' : '' }}">
-                            <a href="{{ url('/masuk') }}" class='sidebar-link'>
+                            <a href="{{ url('/masuk-raw') }}" class='sidebar-link'>
                                 <i class="bi bi-bag-plus"></i>
-                                <span>Barang Masuk</span>
+                                <span>Barang Masuk Pra-Produksi</span>
                             </a>
                         </li>
-                        <li class="sidebar-item {{ request()->is('*hasil-produksi') ? 'active' : '' }}">
+                        <li class="sidebar-item {{ request()->is('*keluar*') ? 'active' : '' }}">
+                            <a href="{{ url('/keluar-raw') }}" class='sidebar-link'>
+                                <i class="bi bi-bag-dash"></i>
+                                <span>Barang Keluar Pra-Produksi</span>
+                            </a>
+                        </li>
+                        {{-- <li class="sidebar-item {{ request()->is('*hasil-produksi') ? 'active' : '' }}">
                             <a href="{{ url('/hasil-produksi') }}" class='sidebar-link'>
                                 <i class="bi bi-box-seam"></i>
                                 <span>Hasil Produksi</span>
                             </a>
-                        </li>
-                        <li class="sidebar-item {{ request()->is('*keluar*') ? 'active' : '' }}">
-                            <a href="{{ url('/keluar') }}" class='sidebar-link'>
-                                <i class="bi bi-bag-dash"></i>
-                                <span>Barang Keluar</span>
-                            </a>
-                        </li>
+                        </li> --}}
                         <li class="sidebar-title">History</li>
                         <li class="sidebar-item {{ request()->is('*history*') ? 'active' : '' }}">
                             <a href="{{ url('/history') }}" class='sidebar-link'>

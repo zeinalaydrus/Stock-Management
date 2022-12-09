@@ -10,3 +10,4 @@ class History extends Model
     use HasFactory;
     
 }
+

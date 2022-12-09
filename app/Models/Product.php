@@ -10,10 +10,7 @@ class Product extends Model
     use HasFactory;
     protected $table = 'product';
     protected $fillable = [
-        'name',
-        'image',
-        'stock',
-        'description'
+       +
     ];
     public function pengeluarans()
     {
@@ -23,5 +20,8 @@ class Product extends Model
     public function pemasukans()
     {
         return $this->hasMany(Pemasukan::class);
+    }
+    public function histories(){
+        return $this->hasMany(History::class);
     }
 }

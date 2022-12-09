@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
+use App\Models\Raw;
 use App\Models\Pengeluaran;
 use Illuminate\Http\Request;
 
-class PengeluaranController extends Controller
+class PengeluaranRawController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class PengeluaranController extends Controller
      */
     public function index()
     {
-        $data = Product::with('pengeluarans')->get();
-        return view('Pengeluaran.keluar', compact('data'));
+        $data = Raw::with('pengeluarans')->get();
+        return view('PengeluaranRaw.keluar', compact('data'));
     }
 
     /**
@@ -38,16 +38,16 @@ class PengeluaranController extends Controller
     public function store(Request $request)
     {
         $validateData = $request->validate([
-            'product_id' => 'required',
-            'quantity' => 'required',
+            'raw_id' => 'required',
+            'stock' => 'required',
             'tanggal_keluar' => 'required',
             'bukti' => 'required|file',
             'description' => 'required',
         ]);
 
         $keluar = new Pengeluaran();
-        $keluar->product_id = $request->product_id;
-        $keluar->quantity = $request->quantity;
+        $keluar->raw_id = $request->raw_id;
+        $keluar->stock = $request->stock;
         $keluar->tanggal_keluar = $request->tanggal_keluar;
         $keluar->description = $request->description;
 
@@ -61,6 +61,15 @@ class PengeluaranController extends Controller
             $keluar->bukti = $request->file('bukti')->getClientOriginalName();
 
         }
+
+        $update = Raw::where('id',$request->raw_id)->first();
+        // if($update->stock == 0) {
+        //     return redirect()->back();
+        // }
+        $update->update([
+            'stock' =>   $update->stock - $request->stock
+        ]);
+
         $keluar->save();
 
         return redirect()->back();

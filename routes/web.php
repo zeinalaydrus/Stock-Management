@@ -3,8 +3,8 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\PemasukanController;
-use App\Http\Controllers\PengeluaranController;
+use App\Http\Controllers\PemasukanRawController;
+use App\Http\Controllers\PengeluaranRawController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\RawController;
 use Illuminate\Support\Facades\Auth;
@@ -41,14 +41,14 @@ Route::get('/category', [CategoryController::class, 'index']);
 Route::post('/category-create', [CategoryController::class, 'store']);
 Route::delete('/category-delete/{id}', [CategoryController::class, 'destroy']);
 
-Route::get('/masuk', [PemasukanController::class, 'index']);
-Route::post('/masuk-create', [PemasukanController::class, 'store']);
-Route::delete('/masuk-delete/{id}', [PemasukanController::class, 'destroy']);
+Route::get('/masuk-raw', [PemasukanRawController::class, 'index']);
+Route::post('/masuk-raw-create', [PemasukanRawController::class, 'store']);
+Route::delete('/masuk-raw-delete/{id}', [PemasukanRawController::class, 'destroy']);
 
 
-Route::get('/keluar', [PengeluaranController::class, 'index']);
-Route::post('/keluar-create', [PengeluaranController::class, 'store']);
-Route::delete('/keluar-delete/{id}', [PengeluaranController::class, 'destroy']);
+Route::get('/keluar-raw', [PengeluaranRawController::class, 'index']);
+Route::post('/keluar-raw-create', [PengeluaranRawController::class, 'store']);
+Route::delete('/keluar-raw-delete/{id}', [PengeluaranRawController::class, 'destroy']);
 
 Route::get('/history', [HistoryController::class, 'index']);
 Route::post('/history-create', [HistoryController::class, 'store']);

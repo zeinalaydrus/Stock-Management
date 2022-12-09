@@ -8,17 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Pemasukan extends Model
 {
     use HasFactory;
-    protected $table = 'pemasukan';
+    protected $table = 'pemasukan_raw';
     protected $fillable = [
-        'product_id',
-        'quantity',
+        'raw_id',
+        'stock',
         'tanggal_masuk',
         'bukti',
-        'deskripsi',
+        'description',
     ];
 
-    public function product()
+    public function raw()
     {
-        return $this->belongsTo(Product::class);
+        return $this->belongsTo(Raw::class);
     }
 }
