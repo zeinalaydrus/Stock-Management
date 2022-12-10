@@ -9,7 +9,7 @@
                     <button style="color: white" type="button" class="" data-bs-dismiss="modal"
                         aria-label="Close"></button>
                 </div>
-                <form action={{ url('/untuk-produksi-create') }} id="formAdd" method="post" enctype="multipart/form-data">
+                <form action={{ url('/hasil-produksi-create') }} id="formAdd" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body container">
                         <div class="col-md-12">
@@ -63,7 +63,7 @@
                         <button style="color: white" type="button" class="" data-bs-dismiss="modal"
                             aria-label="Close"></button>
                     </div>
-                    <form action="{{ url('/untuk-produksi-delete/' . $product->id) }}" method="POST"
+                    <form action="{{ url('/hasil-produksi-delete/' . $product->id) }}" method="POST"
                         enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
@@ -129,7 +129,7 @@
                         <h2 style="text-align: center"> Are you sure want to delete this task? </h2>
                     </div>
                     <div class="modal-footer">
-                        <form action="{{ url('/untuk-produksi-delete/' . $product->id) }}" method="POST">
+                        <form action="{{ url('/hasil-produksi-delete/' . $product->id) }}" method="POST">
                             @csrf
                             @method('delete')
                             <button type="submit" class="btn btn-danger"><i class="bx bx-trash"></i>
@@ -141,7 +141,7 @@
             </div>
         </div>
     @endforeach
-    <h1 class="mt-4 ms-5">Untuk Produksi</h1>
+    <h1 class="mx-4 ms-3">Pasca-Produksi</h1>
     <div class="container-fluid">
         <div class="card shadow">
             <div class="card-header">

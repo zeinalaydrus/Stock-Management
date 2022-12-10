@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Raw;
-use App\Models\Pengeluaran;
-use App\Models\PengeluaranRaw;
+use App\Models\Product;
+use App\Models\Pemasukan;
+use App\Models\PemasukanProduct;
 use Illuminate\Http\Request;
 
-class PengeluaranRawController extends Controller
+class PemasukanProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class PengeluaranRawController extends Controller
      */
     public function index()
     {
-        $data = Raw::with('pengeluaranraws')->get();
-        return view('PengeluaranRaw.keluar', compact('data'));
+        $data = Product::with('pemasukanproducts')->get();
+        return view('PemasukanProduct.masuk', compact('data'));
     }
 
     /**
@@ -39,39 +39,35 @@ class PengeluaranRawController extends Controller
     public function store(Request $request)
     {
         $validateData = $request->validate([
-            'raw_id' => 'required',
+            'product_id' => 'required',
             'stock' => 'required',
-            'tanggal_keluar' => 'required',
+            'tanggal_masuk' => 'required',
             'bukti' => 'required|file',
             'description' => 'required',
         ]);
 
-        $keluar = new PengeluaranRaw();
-        $keluar->raw_id = $request->raw_id;
-        $keluar->stock = $request->stock;
-        $keluar->tanggal_keluar = $request->tanggal_keluar;
-        $keluar->description = $request->description;
+        $masuk = new PemasukanProduct();
+        $masuk->product_id = $request->product_id;
+        $masuk->stock = $request->stock;
+        $masuk->tanggal_masuk = $request->tanggal_masuk;
+        $masuk->description = $request->description;
 
-        if($request->bukti){
+        if ($request->bukti) {
 
             $img = $request->file('bukti');
             $filename = $img->getClientOriginalName();
             if ($request->hasFile('bukti')) {
-                $request->file('bukti')->storeAs('/bukti',$filename);
+                $request->file('bukti')->storeAs('/bukti', $filename);
             }
-            $keluar->bukti = $request->file('bukti')->getClientOriginalName();
-
+            $masuk->bukti = $request->file('bukti')->getClientOriginalName();
         }
-
-        $update = Raw::where('id',$request->raw_id)->first();
-        // if($update->stock == 0) {
-        //     return redirect()->back();
-        // }
+        
+        $update = Product::where('id',$request->product_id)->first();
         $update->update([
-            'stock' =>   $update->stock - $request->stock
+            'stock' =>   $update->stock + $request->stock
         ]);
+        $masuk->save();
 
-        $keluar->save();
 
         return redirect()->back();
     }
@@ -79,10 +75,10 @@ class PengeluaranRawController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\PengeluaranRaw  $pengeluaranraw
+     * @param  \App\Models\Pemasukan  $pemasukanproduct
      * @return \Illuminate\Http\Response
      */
-    public function show(PengeluaranRaw $pengeluaranraw)
+    public function show(PemasukanProduct $pemasukanproduct)
     {
         //
     }
@@ -90,10 +86,10 @@ class PengeluaranRawController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\PengeluaranRaw  $pengeluaranraw
+     * @param  \App\Models\Pemasukan  $pemasukanproduct
      * @return \Illuminate\Http\Response
      */
-    public function edit(PengeluaranRaw $pengeluaranraw)
+    public function edit(PemasukanProduct $pemasukanproduct)
     {
         //
     }
@@ -102,10 +98,10 @@ class PengeluaranRawController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\PengeluaranRaw  $pengeluaranraw
+     * @param  \App\Models\PemasukanProduct  $pemasukanproduct
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PengeluaranRaw $pengeluaranraw)
+    public function update(Request $request, PemasukanProduct $pemasukanproduct)
     {
         //
     }
@@ -113,11 +109,14 @@ class PengeluaranRawController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\PengeluaranRaw  $pengeluaranraw
+     * @param  \App\Models\Pemasukan  $pemasukanproduct
      * @return \Illuminate\Http\Response
      */
-    public function destroy(PengeluaranRaw $pengeluaranraw)
+    public function destroy($id)
     {
-        //
+        $delete = PemasukanProduct::find($id);
+        $delete->delete();
+
+        return redirect()->back();
     }
 }

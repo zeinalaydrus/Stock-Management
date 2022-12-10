@@ -9,14 +9,14 @@
                     <button style="color: white" type="button" class="" data-bs-dismiss="modal"
                         aria-label="Close"></button>
                 </div>
-                <form action={{ url('/masuk-raw-create') }} id="formAdd" method="post" enctype="multipart/form-data">
+                <form action={{ url('/masuk-product-create') }} id="formAdd" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body container">
                         <div class="col-md-12">
-                            <label for="raw" class="form-label">Raw</label>
-                            <select name="raw_id" class="form-select" aria-label="Default select example">
-                                @foreach ($data as $raw)
-                                    <option value="{{ $raw->id }}">{{ $raw->name }}</option>
+                            <label for="product" class="form-label">product</label>
+                            <select name="product_id" class="form-select" aria-label="Default select example">
+                                @foreach ($data as $product)
+                                    <option value="{{ $product->id }}">{{ $product->name }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -72,7 +72,7 @@
                         <h2 style="text-align: center"> Are you sure want to delete this task? </h2>
                     </div>
                     <div class="modal-footer">
-                        <form action="{{ url('/masuk-raw-delete/' . $item->id) }}" method="POST">
+                        <form action="{{ url('/masuk-product-delete/' . $item->id) }}" method="POST">
                             @csrf
                             @method('delete')
                             <button type="submit" class="btn btn-danger"><i class="bx bx-trash"></i>
@@ -112,15 +112,15 @@
                             @endphp
 
 
-                            @foreach ($data as $raw)
-                                @foreach ($raw->pemasukanraws as $item)
+                            @foreach ($data as $product)
+                                @foreach ($product->pemasukanproducts as $item)
                                     <tr>
                                         <td>{{ $no++ }}</td>
                                         <td>
                                             <img class="card-img" style="max-height:140px; max-width:200px"
                                                 src="{{ asset('/storage/bukti/'. $item->bukti)}}">
                                         </td> 
-                                        <td>{{ $raw->name}}</td>                                       
+                                        <td>{{ $product->name}}</td>                                       
                                         <td>{{ $item->stock }}</td>
                                         <td>{{ $item->description }}</td>
                                         <td>{{ $item->tanggal_masuk }}</td>

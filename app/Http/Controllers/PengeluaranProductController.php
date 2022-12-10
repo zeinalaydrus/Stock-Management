@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Raw;
-use App\Models\Pengeluaran;
-use App\Models\PengeluaranRaw;
+use App\Models\PengeluaranProduct;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
-class PengeluaranRawController extends Controller
+class PengeluaranProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +15,8 @@ class PengeluaranRawController extends Controller
      */
     public function index()
     {
-        $data = Raw::with('pengeluaranraws')->get();
-        return view('PengeluaranRaw.keluar', compact('data'));
+        $data = Product::with('pengeluaranproducts')->get();
+        return view('PengeluaranProduct.keluar', compact('data'));
     }
 
     /**
@@ -39,15 +38,15 @@ class PengeluaranRawController extends Controller
     public function store(Request $request)
     {
         $validateData = $request->validate([
-            'raw_id' => 'required',
+            'product_id' => 'required',
             'stock' => 'required',
             'tanggal_keluar' => 'required',
             'bukti' => 'required|file',
             'description' => 'required',
         ]);
 
-        $keluar = new PengeluaranRaw();
-        $keluar->raw_id = $request->raw_id;
+        $keluar = new PengeluaranProduct();
+        $keluar->product_id = $request->product_id;
         $keluar->stock = $request->stock;
         $keluar->tanggal_keluar = $request->tanggal_keluar;
         $keluar->description = $request->description;
@@ -63,7 +62,7 @@ class PengeluaranRawController extends Controller
 
         }
 
-        $update = Raw::where('id',$request->raw_id)->first();
+        $update = Product::where('id',$request->product_id)->first();
         // if($update->stock == 0) {
         //     return redirect()->back();
         // }
@@ -79,10 +78,10 @@ class PengeluaranRawController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\PengeluaranRaw  $pengeluaranraw
+     * @param  \App\Models\PengeluaranProduct  $pengeluaranproduct
      * @return \Illuminate\Http\Response
      */
-    public function show(PengeluaranRaw $pengeluaranraw)
+    public function show(PengeluaranProduct $pengeluaranproduct)
     {
         //
     }
@@ -90,10 +89,10 @@ class PengeluaranRawController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\PengeluaranRaw  $pengeluaranraw
+     * @param  \App\Models\PengeluaranProduct  $pengeluaranproduct
      * @return \Illuminate\Http\Response
      */
-    public function edit(PengeluaranRaw $pengeluaranraw)
+    public function edit(PengeluaranProduct $pengeluaranproduct)
     {
         //
     }
@@ -102,10 +101,10 @@ class PengeluaranRawController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\PengeluaranRaw  $pengeluaranraw
+     * @param  \App\Models\PengeluaranProduct  $pengeluaranproduct
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PengeluaranRaw $pengeluaranraw)
+    public function update(Request $request, PengeluaranProduct $pengeluaran)
     {
         //
     }
@@ -113,10 +112,10 @@ class PengeluaranRawController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\PengeluaranRaw  $pengeluaranraw
+     * @param  \App\Models\PengeluaranProduct  $pengeluaranproduct
      * @return \Illuminate\Http\Response
      */
-    public function destroy(PengeluaranRaw $pengeluaranraw)
+    public function destroy(PengeluaranProduct $pengeluaranproduct)
     {
         //
     }

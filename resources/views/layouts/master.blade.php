@@ -16,7 +16,7 @@
     <link rel="stylesheet" href={{ asset('assets/css/pages/simple-datatables.css') }}>
     <link rel="stylesheet" href={{ asset('assets/css/pages/sweetalert2.css') }}>
 
-    <title>Inventory</title>
+    <title>Stock Management</title>
 
 </head>
 
@@ -63,38 +63,51 @@
                 </div>
                 <div class="sidebar-menu">
                     <ul class="menu">
-                    <li class="sidebar-title">Menu Barang</li>
+                    <li class="sidebar-title">Menu Barang Pra-Produksi</li>
                         <li class="sidebar-item {{ request()->is('*untuk-produksi') ? 'active' : '' }}">
                             <a href="{{ url('/untuk-produksi') }}" class='sidebar-link'>
                                 <i class="bi bi-box-seam"></i>
                                 <span>Barang Pra-Produksi</span>
                             </a>
                         </li>
-                        <li class="sidebar-item {{ request()->is('*masuk') ? 'active' : '' }}">
+                        <li class="sidebar-item {{ request()->is('*masuk-raw') ? 'active' : '' }}">
                             <a href="{{ url('/masuk-raw') }}" class='sidebar-link'>
                                 <i class="bi bi-bag-plus"></i>
                                 <span>Barang Masuk Pra-Produksi</span>
                             </a>
                         </li>
-                        <li class="sidebar-item {{ request()->is('*keluar*') ? 'active' : '' }}">
+                        <li class="sidebar-item {{ request()->is('*keluar-raw*') ? 'active' : '' }}">
                             <a href="{{ url('/keluar-raw') }}" class='sidebar-link'>
                                 <i class="bi bi-bag-dash"></i>
                                 <span>Barang Keluar Pra-Produksi</span>
                             </a>
                         </li>
-                        {{-- <li class="sidebar-item {{ request()->is('*hasil-produksi') ? 'active' : '' }}">
+                        <li class="sidebar-title">Menu Barang Pasca-Produksi</li>
+                            <li class="sidebar-item {{ request()->is('*hasil-produksi') ? 'active' : '' }}">
                             <a href="{{ url('/hasil-produksi') }}" class='sidebar-link'>
                                 <i class="bi bi-box-seam"></i>
-                                <span>Hasil Produksi</span>
+                                <span>Barang Pasca-Produksi</span>
                             </a>
-                        </li> --}}
-                        <li class="sidebar-title">History</li>
+                        </li>
+                        <li class="sidebar-item {{ request()->is('*masuk-product') ? 'active' : '' }}">
+                            <a href="{{ url('/masuk-product') }}" class='sidebar-link'>
+                                <i class="bi bi-bag-plus"></i>
+                                <span>Barang Masuk Pasca-Produksi</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item {{ request()->is('*keluar-product*') ? 'active' : '' }}">
+                            <a href="{{ url('/keluar-product') }}" class='sidebar-link'>
+                                <i class="bi bi-bag-dash"></i>
+                                <span>Barang Keluar Pasca-Produksi</span>
+                            </a>
+                        </li>
+                        {{-- <li class="sidebar-title">History</li>
                         <li class="sidebar-item {{ request()->is('*history*') ? 'active' : '' }}">
                             <a href="{{ url('/history') }}" class='sidebar-link'>
                                 <i class="bi bi-clock-history"></i>
                                 <span>History</span>
                             </a>
-                        </li>
+                        </li> --}}
                         <li class="sidebar-title">Logout</li>
                         <li class="sidebar-item {{ request()->is('*logout*') ? 'active' : '' }}">
                             <a class="sidebar-link" href="{{ route('logout') }}"

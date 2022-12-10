@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Pemasukan extends Model
+class PengeluaranProduct extends Model
 {
     use HasFactory;
-    protected $table = 'pemasukan_raw';
+    protected $table = 'pengeluaran_product';
     protected $fillable = [
         'raw_id',
-        'stock',
-        'tanggal_masuk',
+        'raw_stock',
+        'tanggal_keluar',
         'bukti',
         'description',
     ];

@@ -113,7 +113,7 @@
 
 
                             @foreach ($data as $raw)
-                                @foreach ($raw->pengeluarans as $item)
+                                @foreach ($raw->pengeluaranraws as $item)
                                     <tr>
                                         <td>{{ $no++ }}</td>
                                         <td>

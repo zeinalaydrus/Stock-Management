@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Raw;
-use App\Models\Pemasukan;
+use App\Models\PemasukanRaw;
 use Illuminate\Http\Request;
 
 class PemasukanRawController extends Controller
@@ -15,7 +15,7 @@ class PemasukanRawController extends Controller
      */
     public function index()
     {
-        $data = Raw::with('pemasukans')->get();
+        $data = Raw::with('pemasukanraws')->get();
         return view('PemasukanRaw.masuk', compact('data'));
     }
 
@@ -45,7 +45,7 @@ class PemasukanRawController extends Controller
             'description' => 'required',
         ]);
 
-        $masuk = new Pemasukan();
+        $masuk = new PemasukanRaw();
         $masuk->raw_id = $request->raw_id;
         $masuk->stock = $request->stock;
         $masuk->tanggal_masuk = $request->tanggal_masuk;
@@ -66,7 +66,6 @@ class PemasukanRawController extends Controller
             'stock' =>   $update->stock + $request->stock
         ]);
         
-     
         $masuk->save();
 
 
@@ -76,10 +75,10 @@ class PemasukanRawController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Pemasukan  $pemasukan
+     * @param  \App\Models\PemasukanRaw  $pemasukanraw
      * @return \Illuminate\Http\Response
      */
-    public function show(Pemasukan $pemasukan)
+    public function show(PemasukanRaw $pemasukanraw)
     {
         //
     }
@@ -87,10 +86,10 @@ class PemasukanRawController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Pemasukan  $pemasukan
+     * @param  \App\Models\PemasukanRaw  $pemasukanraw
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pemasukan $pemasukan)
+    public function edit(PemasukanRaw $pemasukanraw)
     {
         //
     }
@@ -99,10 +98,10 @@ class PemasukanRawController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Pemasukan  $pemasukan
+     * @param  \App\Models\PemasukanRaw  $pemasukanraw
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pemasukan $pemasukan)
+    public function update(Request $request, PemasukanRaw $pemasukanraw)
     {
         //
     }
@@ -110,12 +109,12 @@ class PemasukanRawController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Pemasukan  $pemasukan
+     * @param  \App\Models\PemasukanRaw  $pemasukanraw
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $delete = Pemasukan::find($id);
+        $delete = PemasukanRaw::find($id);
         $delete->delete();
 
         return redirect()->back();

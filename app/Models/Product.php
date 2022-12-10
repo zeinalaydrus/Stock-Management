@@ -10,18 +10,19 @@ class Product extends Model
     use HasFactory;
     protected $table = 'product';
     protected $fillable = [
-       +
+        'name',
+        'image',
+        'stock',
+        'description'
     ];
-    public function pengeluarans()
+
+    public function pengeluaranproducts()
     {
-        return $this->hasMany(Pengeluaran::class);
+        return $this->hasMany(PengeluaranProduct::class);
     }
 
-    public function pemasukans()
+    public function pemasukanproducts()
     {
-        return $this->hasMany(Pemasukan::class);
-    }
-    public function histories(){
-        return $this->hasMany(History::class);
+        return $this->hasMany(PemasukanProduct::class);
     }
 }

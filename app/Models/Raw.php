@@ -15,13 +15,13 @@ class Raw extends Model
         'stock',
         'description'
     ];
-    public function pengeluarans()
+    public function pengeluaranraws()
     {
-        return $this->hasMany(Pengeluaran::class);
+        return $this->hasMany(PengeluaranRaw::class);
     }
 
-    public function pemasukans()
+    public function pemasukanraws()
     {
-        return $this->hasMany(Pemasukan::class);
+        return $this->hasMany(PemasukanRaw::class);
     }
 }
