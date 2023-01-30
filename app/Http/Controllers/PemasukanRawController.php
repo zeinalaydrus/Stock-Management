@@ -16,7 +16,7 @@ class PemasukanRawController extends Controller
     public function index()
     {
         $data = Raw::with('pemasukanraws')->get();
-        return view('PemasukanRaw.masuk', compact('data'));
+        return view('pra-produksi.masuk', compact('data'));
     }
 
     /**
@@ -60,12 +60,12 @@ class PemasukanRawController extends Controller
             }
             $masuk->bukti = $request->file('bukti')->getClientOriginalName();
         }
-        
-        $update = Raw::where('id',$request->raw_id)->first();
+
+        $update = Raw::where('id', $request->raw_id)->first();
         $update->update([
             'stock' =>   $update->stock + $request->stock
         ]);
-        
+
         $masuk->save();
 
 

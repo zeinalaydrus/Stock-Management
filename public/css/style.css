@@ -6,6 +6,12 @@ body {
     min-height: 2800px;
 }
 
+.square {
+    height: 50px;
+    width: 50px;
+    background-color: #555;
+}
+
 #projects {
     margin-top: -180px;
     background-color: #b5d1ff

@@ -16,7 +16,7 @@ class ProductController extends Controller
     public function index()
     {
         $data = Product::all();
-        return view('Pasca-Produksi.product', compact('data'));
+        return view('pasca-produksi.product', compact('data'));
     }
 
     /**
@@ -40,7 +40,7 @@ class ProductController extends Controller
         $validateData = $request->validate([
             'name' => 'required',
             'image' => 'required|file',
-            'stock' => 'required',
+            'stock',
             'description' => 'required',
         ]);
 

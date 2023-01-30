@@ -9,6 +9,7 @@ use App\Http\Controllers\PemasukanRawController;
 use App\Http\Controllers\PengeluaranRawController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\RawController;
+use App\Http\Controllers\RekapController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -62,3 +63,7 @@ Route::delete('/keluar-product-delete/{id}', [PengeluaranProductController::clas
 Route::get('/history', [HistoryController::class, 'index']);
 Route::post('/history-create', [HistoryController::class, 'store']);
 Route::delete('/history-delete/{id}', [HistoryController::class, 'destroy']);
+
+Route::get('/rekap', [RekapController::class, 'index']);
+Route::post('/rekap-create', [RekapController::class, 'store']);
+Route::delete('/rekap-delete/{id}', [RekapController::class, 'destroy']);

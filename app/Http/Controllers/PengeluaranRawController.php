@@ -17,7 +17,7 @@ class PengeluaranRawController extends Controller
     public function index()
     {
         $data = Raw::with('pengeluaranraws')->get();
-        return view('PengeluaranRaw.keluar', compact('data'));
+        return view('pra-produksi.keluar', compact('data'));
     }
 
     /**

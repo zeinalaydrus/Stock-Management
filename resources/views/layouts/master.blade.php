@@ -4,19 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href={{ asset('assets/css/main/app.css') }}>
-    <link rel="stylesheet" href={{ asset('assets/css/main/app-dark.css') }}>
-    <link rel="shortcut icon" href={{ asset('assets/images/logo/favicon.svg') }} type="image/x-icon">
-    <link rel="shortcut icon" href={{ asset('assets/images/logo/favicon.png') }} type="image/png">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-    <link rel="stylesheet" href={{ asset('assets/css/shared/iconly.css') }}>
-    <link rel="stylesheet" href={{ asset('assets/css/pages/simple-datatables.css') }}>
-    <link rel="stylesheet" href={{ asset('assets/css/pages/sweetalert2.css') }}>
-
     <title>Stock Management</title>
+
+    <link rel="stylesheet" href="assets/css/main/app.css">
+    <link rel="stylesheet" href="assets/css/main/app-dark.css">
+    <link rel="shortcut icon" href="assets/images/logo/favicon.svg" type="image/x-icon">
+    <link rel="shortcut icon" href="assets/images/logo/favicon.png" type="image/png">
+
+    <link rel="stylesheet" href="assets/css/shared/iconly.css">
 
 </head>
 
@@ -26,10 +21,14 @@
             <div class="sidebar-wrapper active">
                 <div class="sidebar-header position-relative">
                     <div class="d-flex justify-content-between align-items-center">
+                        <div class="logo">
+                            <a href="index.html"><img src="assets/images/logo/logo.svg" alt="Logo"
+                                    srcset=""></a>
+                        </div>
                         <div class="theme-toggle d-flex gap-2  align-items-center mt-2">
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                aria-hidden="true" role="img" class="iconify iconify--system-uicons" height="20"
-                                preserveAspectRatio="xMidYMid meet" viewBox="0 0 21 21">
+                                aria-hidden="true" role="img" class="iconify iconify--system-uicons" width="20"
+                                height="20" preserveAspectRatio="xMidYMid meet" viewBox="0 0 21 21">
                                 <g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-linecap="round"
                                     stroke-linejoin="round">
                                     <path
@@ -63,57 +62,78 @@
                 </div>
                 <div class="sidebar-menu">
                     <ul class="menu">
-                    <li class="sidebar-title">Menu Barang Pra-Produksi</li>
-                        <li class="sidebar-item {{ request()->is('*untuk-produksi') ? 'active' : '' }}">
-                            <a href="{{ url('/untuk-produksi') }}" class='sidebar-link'>
-                                <i class="bi bi-box-seam"></i>
-                                <span>Barang Pra-Produksi</span>
+                        <li class="sidebar-title">Menu</li>
+                        <li
+                            class="sidebar-item  has-sub {{ request()->is('*untuk-produksi', '*masuk-raw', '*keluar-raw*') ? 'active' : '' }}">
+                            <a href="#" class='sidebar-link'>
+                                <i class="bi bi-stack"></i>
+                                <span>Pra Produksi</span>
+                            </a>
+                            <ul class="submenu ">
+                                <li class="submenu-item ">
+                                    <a href="{{ url('/untuk-produksi') }}" class='submenu-link'>
+                                        <i class="bi bi-box-seam"></i>
+                                        <span>Total Barang</span>
+                                    </a>
+                                </li>
+                                <li class="submenu-item ">
+                                    <a href="{{ url('/masuk-raw') }}" class='submenu-link'>
+                                        <i class="bi bi-bag-plus"></i>
+                                        <span>Barang Masuk</span>
+                                    </a>
+                                </li>
+                                <li class="submenu-item ">
+                                    <a href="{{ url('/keluar-raw') }}" class='submenu-link'>
+                                        <i class="bi bi-bag-dash"></i>
+                                        <span>Barang Keluar</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li
+                            class="sidebar-item  has-sub {{ request()->is('*hasil-produksi', '*masuk-product', '*keluar-product*') ? 'active' : '' }}">
+                            <a href="#" class='sidebar-link'>
+                                <i class="bi bi-stack"></i>
+                                <span>Pasca Produksi</span>
+                            </a>
+                            <ul class="submenu ">
+                                <li class="submenu-item ">
+                                    <a href="{{ url('/hasil-produksi') }}" class='submenu-link'>
+                                        <i class="bi bi-box-seam"></i>
+                                        <span>Total Barang</span>
+                                    </a>
+                                </li>
+                                <li class="submenu-item ">
+                                    <a href="{{ url('/masuk-product') }}" class='submenu-link'>
+                                        <i class="bi bi-bag-plus"></i>
+                                        <span>Barang Masuk</span>
+                                    </a>
+                                </li>
+                                <li class="submenu-item ">
+                                    <a href="{{ url('/keluar-product') }}" class='submenu-link'>
+                                        <i class="bi bi-bag-dash"></i>
+                                        <span>Barang Keluar</span>
+                                    </a>
+                                </li>
+                            </ul>
+
+                        <li class="sidebar-title">Rekap</li>
+
+                        <li class="sidebar-item {{ request()->is('*rekap*') ? 'active' : '' }}">
+                            <a href="{{ url('/rekap') }}" class='sidebar-link'>
+                                <i class="bi bi-file-earmark-text"></i>
+                                <span>Rekap Data</span>
                             </a>
                         </li>
-                        <li class="sidebar-item {{ request()->is('*masuk-raw') ? 'active' : '' }}">
-                            <a href="{{ url('/masuk-raw') }}" class='sidebar-link'>
-                                <i class="bi bi-bag-plus"></i>
-                                <span>Barang Masuk Pra-Produksi</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item {{ request()->is('*keluar-raw*') ? 'active' : '' }}">
-                            <a href="{{ url('/keluar-raw') }}" class='sidebar-link'>
-                                <i class="bi bi-bag-dash"></i>
-                                <span>Barang Keluar Pra-Produksi</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-title">Menu Barang Pasca-Produksi</li>
-                            <li class="sidebar-item {{ request()->is('*hasil-produksi') ? 'active' : '' }}">
-                            <a href="{{ url('/hasil-produksi') }}" class='sidebar-link'>
-                                <i class="bi bi-box-seam"></i>
-                                <span>Barang Pasca-Produksi</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item {{ request()->is('*masuk-product') ? 'active' : '' }}">
-                            <a href="{{ url('/masuk-product') }}" class='sidebar-link'>
-                                <i class="bi bi-bag-plus"></i>
-                                <span>Barang Masuk Pasca-Produksi</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item {{ request()->is('*keluar-product*') ? 'active' : '' }}">
-                            <a href="{{ url('/keluar-product') }}" class='sidebar-link'>
-                                <i class="bi bi-bag-dash"></i>
-                                <span>Barang Keluar Pasca-Produksi</span>
-                            </a>
-                        </li>
-                        {{-- <li class="sidebar-title">History</li>
-                        <li class="sidebar-item {{ request()->is('*history*') ? 'active' : '' }}">
-                            <a href="{{ url('/history') }}" class='sidebar-link'>
-                                <i class="bi bi-clock-history"></i>
-                                <span>History</span>
-                            </a>
-                        </li> --}}
-                        <li class="sidebar-title">Logout</li>
+
+                        <li class="sidebar-title">Lainnya</li>
+
                         <li class="sidebar-item {{ request()->is('*logout*') ? 'active' : '' }}">
                             <a class="sidebar-link" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">
-                                <i class="bi bi-box-arrow-right"></i>
+                                <i class="bi bi-box-arrow-left"></i>
                                 <span>Logout</span>
                             </a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -135,14 +155,12 @@
 
         </div>
     </div>
-    <script src={{ asset('assets/js/app.js') }}></script>
-    <script src={{ asset('assets/js/pages/dashboard.js') }}></script>
-    <script src={{ asset('assets/js/extensions/simple-datatables.js') }}></script>
-    <script src={{ asset('assets/js/extensions/ui-apexchart.js') }}></script>
-    <script src={{ asset('assets/js/app.js') }}></script>
-    <script src={{ asset('assets/js/extensions/sweetalert2.js') }}></script>
+    <script src="assets/js/bootstrap.js"></script>
+    <script src="assets/js/app.js"></script>
 
-    @include('sweetalert::alert')
+    <!-- Need: Apexcharts -->
+    <script src="assets/extensions/apexcharts/apexcharts.min.js"></script>
+    <script src="assets/js/pages/dashboard.js"></script>
 
 </body>
 

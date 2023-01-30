@@ -21,7 +21,7 @@
                     {{-- <div class="logo-login">
                         <img src="assets/images/logo.svg" alt="icon">
                     </div> --}}
-                    <h1 class="auth-title" style="color: #016459">Log in.</h1>
+                    <h1 class="auth-title" style="color: #012970">Log in.</h1>
                     <p class="auth-subtitle mb-5">Log in with your data that you entered during registration.</p>
 
                     <form class="row g-3 needs-validation" method="POST" action="{{ route('login') }}">
@@ -53,12 +53,12 @@
                             </div>
 
                         </div>
-                        <button class="btn w-100" style="background-color: #008374; color:azure;"
+                        <button class="btn w-100" style="background-color: #003692; color:azure;"
                             type="submit">Login</button>
                     </form>
                     <div class="text-center mt-5 text-lg fs-4">
                         <p class="text-gray-600">Don't have an account? <a href="{{ route('register') }}"
-                                style="color:#008374;" class="font-bold">Sign up</a></p>
+                                style="color:#003692;" class="font-bold">Sign up</a></p>
                     </div>
                 </div>
             </div>

@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('pemasukan_raw', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('raw_id');
-            $table->foreign('raw_id')->references('id')->on('raw');
+            $table->foreign('raw_id')->references('id')->on('raw')->onDelete('cascade');
             $table->integer('stock');
             $table->date('tanggal_masuk');
             $table->string('bukti');

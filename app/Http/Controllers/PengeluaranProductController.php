@@ -16,7 +16,7 @@ class PengeluaranProductController extends Controller
     public function index()
     {
         $data = Product::with('pengeluaranproducts')->get();
-        return view('PengeluaranProduct.keluar', compact('data'));
+        return view('pasca-produksi.keluar', compact('data'));
     }
 
     /**

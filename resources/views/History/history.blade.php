@@ -144,7 +144,7 @@
     {{-- 
     <h1 class="mt-4">All product
         <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#modalAdd"><i
-            class="bx bx-list-plus"></i> Add+</button>
+            class="bx bx-list-plus"></i> Tambah +</button>
         </h1>
         
         <div class="container-fluid pt-4" style="background-color: rgb(240, 240, 240)">
@@ -187,7 +187,7 @@
             <div class="card shadow mb-5">
                 <div class="card-body">
                     <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#modalAdd"><i
-                            class="bx bx-list-plus"></i> Add+</button>
+                            class="bx bx-list-plus"></i> Tambah +</button>
                     <table class="table table-striped" id="table1">
                         <thead>
                             <tr>

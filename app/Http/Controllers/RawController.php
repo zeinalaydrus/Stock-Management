@@ -16,7 +16,7 @@ class RawController extends Controller
     public function index()
     {
         $data = Raw::all();
-        return view('Pra-Produksi.product', compact('data'));
+        return view('pra-produksi.raw', compact('data'));
     }
 
     /**
@@ -40,7 +40,7 @@ class RawController extends Controller
         $validateData = $request->validate([
             'name' => 'required',
             'image' => 'required|file',
-            'stock' => 'required',
+            'stock',
             'description' => 'required',
         ]);
 
