@@ -12,6 +12,13 @@
   scroll-behavior: smooth;
 }
 
+.square {
+  height: 155px;
+  width: 155px;
+  background-color: #e0e0e0;
+  text-align: center;
+}
+
 .logo-login img {
   max-width: 150px;
   position: relative;

@@ -93,7 +93,7 @@
                                     <td>{{ $no++ }}</td>
                                     <td>{{ $rekap->judul }}</td>
                                     <td>
-                                        <a href="{{ asset('/storage/' . $rekap->dokumen) }}"><button
+                                        <a href="{{ asset('/storage/dokumen/' . $rekap->dokumen) }}"><button
                                                 class="btn btn-success"><i class="fa-sharp fa-solid fa-paper-plane"></i>
                                                 Download</button></a>
                                     </td>

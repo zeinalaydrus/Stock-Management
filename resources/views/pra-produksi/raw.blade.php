@@ -148,45 +148,41 @@
                 <div class="row ms-2">
                     <div class="col-md-2 mb-2">
                         <div class="card shadow-sm">
-                            <img class="card-img px-2 pt-2" height="200px" style="max-height: 200px; background-image:grey"
-                                src="img/square.png">
                             <div class="card-body">
-                                <hr style=" border: 7px solid #808080;">
-                                <hr style=" border: 7px solid grey;">
-                                <hr style=" border: 7px solid grey;">
+                                <div class="square"></div>
+                                <hr style=" border: 7px solid #808080;max-width:150px">
+                                <hr style=" border: 7px solid grey;max-width:150px">
+                                <hr style=" border: 7px solid grey;max-width:150px">
                             </div>
                         </div>
                     </div>
                     <div class="col-md-2 mb-2">
                         <div class="card shadow-sm">
-                            <img class="card-img px-2 pt-2" height="200px" style="max-height: 200px; background-image:grey"
-                                src="img/square.png">
                             <div class="card-body">
-                                <hr style=" border: 7px solid #808080;">
-                                <hr style=" border: 7px solid grey;">
-                                <hr style=" border: 7px solid grey;">
+                                <div class="square"></div>
+                                <hr style=" border: 7px solid #808080;max-width:150px">
+                                <hr style=" border: 7px solid grey;max-width:150px">
+                                <hr style=" border: 7px solid grey;max-width:150px">
                             </div>
                         </div>
                     </div>
                     <div class="col-md-2 mb-2">
                         <div class="card shadow-sm">
-                            <img class="card-img px-2 pt-2" height="200px" style="max-height: 200px; background-image:grey"
-                                src="img/square.png">
                             <div class="card-body">
-                                <hr style=" border: 7px solid #808080;">
-                                <hr style=" border: 7px solid grey;">
-                                <hr style=" border: 7px solid grey;">
+                                <div class="square"></div>
+                                <hr style=" border: 7px solid #808080;max-width:150px">
+                                <hr style=" border: 7px solid grey;max-width:150px">
+                                <hr style=" border: 7px solid grey;max-width:150px">
                             </div>
                         </div>
                     </div>
                     <div class="col-md-2 mb-2">
                         <div class="card shadow-sm">
-                            <img class="card-img px-2 pt-2" height="200px" style="max-height: 200px; background-image:grey"
-                                src="img/square.png">
                             <div class="card-body">
-                                <hr style=" border: 7px solid #808080;">
-                                <hr style=" border: 7px solid grey;">
-                                <hr style=" border: 7px solid grey;">
+                                <div class="square"></div>
+                                <hr style=" border: 7px solid #808080;max-width:150px">
+                                <hr style=" border: 7px solid grey;max-width:150px">
+                                <hr style=" border: 7px solid grey;max-width:150px">
                             </div>
                         </div>
                     </div>

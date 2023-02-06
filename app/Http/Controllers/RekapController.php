@@ -15,16 +15,20 @@ class RekapController extends Controller
 
     public function store(Request $request)
     {
-        $validateData = $request->validate([
+        $request->validate([
             'judul' => 'required',
-            'file' => 'mimes:doc,docx,pdf,xls,xlsx,ppt,pptx',
         ]);
 
-        if ($request->file('dokumen')) {
-            $validateData['dokumen'] = $request->file('dokumen')->store('post-dokumen');
-        }
+        $input = $request->all();
+        if ($request->hasFile('dokumen')) {
+            $destination = 'public/dokumen';
+            $dokumen = $request->file('dokumen');
+            $dokumen_name = $dokumen->getClientOriginalName();
+            $path = $request->file('dokumen')->storeAs($destination, $dokumen_name);
 
-        Rekap::create($validateData);
+            $input['dokumen'] = $dokumen_name;
+        }
+        Rekap::create($input);
 
 
         return redirect()->back();
